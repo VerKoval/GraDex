@@ -69,3 +69,30 @@ Set `GEMINI_API_KEY` (free, from [aistudio.google.com](https://aistudio.google.c
 
 ## Contributors
 - Veronica Koval: [**LinkedIn**](https://www.linkedin.com/in/veronicakoval), [**GitHub**](https://github.com/VerKoval/)
+
+
+
+[contributors-shield]: https://img.shields.io/github/contributors/VerKoval/GraDex.svg?style=for-the-badge
+[contributors-url]: https://github.com/VerKoval/GraDex/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/VerKoval/GraDex.svg?style=for-the-badge
+[forks-url]: https://github.com/VerKoval/GraDex/network/members
+[stars-shield]: https://img.shields.io/github/stars/VerKoval/GraDex.svg?style=for-the-badge
+[stars-url]: https://github.com/VerKoval/GraDex/stargazers
+[issues-shield]: https://img.shields.io/github/issues/VerKoval/GraDex.svg?style=for-the-badge
+[issues-url]: https://github.com/VerKoval/GraDex/issues
+[license-shield]: https://img.shields.io/github/license/VerKoval/GraDex.svg?style=for-the-badge
+[license-url]: https://github.com/VerKoval/GraDex/blob/main/LICENSE
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=0077B5
+[linkedin-url]: https://www.linkedin.com/in/veronicakoval
+[Python]: https://img.shields.io/badge/python-FFDE57?style=for-the-badge&logo=python&logoColor=4584B6
+[Python-url]: https://www.python.org/
+[FastAPI]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white
+[FastAPI-url]: https://fastapi.tiangolo.com/
+[Agents]: https://img.shields.io/badge/OpenAI_Agents_SDK-412991?style=for-the-badge&logo=openai&logoColor=white
+[Agents-url]: https://openai.github.io/openai-agents-python/
+[Gemini]: https://img.shields.io/badge/Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white
+[Gemini-url]: https://ai.google.dev/
+[Docker]: https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white
+[Docker-url]: https://www.docker.com/
+[CloudRun]: https://img.shields.io/badge/Cloud_Run-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white
+[CloudRun-url]: https://cloud.google.com/run
