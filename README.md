@@ -8,7 +8,7 @@
 # GraDex
 Author: Veronica Koval
 
-Try it: **[deployed URL — fill in from Cloud Run]**
+Try it: **https://gradex-veronicak.cloud.run/** (Use your columbia.edu account)
 
 ## Showcase
 The same consultation in two of the twelve type themes. The interface recolours itself to the card's Pokémon type once the printing is pinned down: Fire on the left, Water on the right.
