@@ -11,11 +11,9 @@ Author: Veronica Koval
 Try it: **https://gradex-veronicak.cloud.run/** (Use your columbia.edu account)
 
 ## Showcase
-The same consultation in two of the twelve type themes. The interface recolours itself to the card's Pokémon type once the printing is pinned down: Fire on the left, Water on the right.
+The same consultation in two of the twelve type themes. The interface recolors itself to the card's Pokémon type once the printing is pinned down: Fire is demonstrated below, triggered once the agent narrows down your car's type
 
-![Fire theme](images/fire-theme.png) ![Water theme](images/water-theme.png)
-
-All twelve themes: [sheet 1](images/themes-1.png), [sheet 2](images/themes-2.png).
+![Fire theme](images/fire-theme.png) 
 
 ## Goal
 Grading a Pokémon card with PSA currently starts at **$59.99**, and shipping both ways adds roughly $50 more to a small submission. Most cards do not clear that bar, yet collectors send them anyway because the PSA 10 price looks big next to the fee. The comparison that actually matters is against *selling the card raw today*, which almost nobody makes. Our goal is to make that comparison for any card, and to show the working.
