@@ -11,7 +11,7 @@ Author: Veronica Koval
 Try it: **https://gradex-veronicak.cloud.run/** (Use your columbia.edu account)
 
 ## Showcase
-The same consultation in two of the twelve type themes. The interface recolors itself to the card's Pokémon type once the printing is pinned down: Fire is demonstrated below, triggered once the agent narrows down your car's type
+The same consultation in two of the twelve type themes. The interface recolors itself to the card's Pokémon type once the printing is pinned down: Fire is demonstrated below, triggered once the agent narrows down your card's type.
 
 ![Fire theme](images/fire-theme.png) 
 
