@@ -8,7 +8,7 @@ WORKDIR /app
 
 # Dependencies first, so edits to the source do not invalidate the layer.
 COPY pyproject.toml uv.lock ./
-RUN uv sync --locked --no-dev
+RUN uv sync --frozen --no-dev
 
 COPY . .
 
