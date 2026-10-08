@@ -5,15 +5,10 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
-# GraDex
+# GraDex: Should I grade my Pokemon Card?
 Author: Veronica Koval
 
 Try it: **https://gradex-veronicak.cloud.run/** (Use your columbia.edu account)
-
-## Showcase
-The same consultation in two of the twelve type themes. The interface recolors itself to the card's Pokémon type once the printing is pinned down: Fire is demonstrated below, triggered once the agent narrows down your card's type.
-
-![Fire theme](images/fire-theme.png) 
 
 ## Goal
 Grading a Pokémon card with PSA currently starts at **$59.99**, and shipping both ways adds roughly $50 more to a small submission. Most cards do not clear that bar, yet collectors send them anyway because the PSA 10 price looks big next to the fee. The comparison that actually matters is against *selling the card raw today*, which almost nobody makes. Our goal is to make that comparison for any card, and to show the working.
@@ -30,7 +25,10 @@ GraDex is a tool-calling chat agent that decides whether a Pokémon card is wort
 - PSA's Value tiers are suspended as of 2026-10-07, so the floor is Standard at $59.99. The fee table carries an `as_of` date, because these numbers move.
 - Missing data refuses rather than invents: no graded comps means no verdict.
 
-**Type themes.** The UI is dark by default. Fire turns the page ember, with your messages in bright orange and the agent's in dark orange, behind a large faint flame; the other ten types do the same with their own palette and symbol (original drawings, not the official energy icons). `selftest.py` re-checks every theme's text contrast from the CSS.
+## Showcase
+The same consultation in two of the twelve type themes. The interface recolors itself to the card's Pokémon type once the printing is pinned down: Fire is demonstrated below, triggered once the agent narrows down your card's type.
+
+![Fire theme](images/fire-theme.png) 
 
 ## Built With
 [![Python][Python]][Python-url]
