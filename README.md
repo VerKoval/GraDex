@@ -51,7 +51,8 @@ uv run selftest.py     # offline checks, no network or credentials needed
 Two things are needed for the full experience.
 
 **`JUSTTCG_API_KEY`** for card data, from [justtcg.com](https://justtcg.com) (free tier: 100 calls a day, 1,000 a month). Without it the condition rubric still works and the agent says plainly that card data is unavailable. Lookups are cached for six hours and the call count sits in the corner of the UI.
-**Gemini API key** Get a key at [aistudio.google.com](https://aistudio.google.com), then `$env:GEMINI_API_KEY = "..."`. Free tier, no Google Cloud project, no billing
+
+**'GEMINI_API_KEY'** Get a key at [aistudio.google.com](https://aistudio.google.com), then `$env:GEMINI_API_KEY = "..."`. Free tier, no Google Cloud project, no billing
 
 Then chat:
 - Describe a card and answer the agent's questions. Open a tool-call chip under any reply to see its arguments and result.
