@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en" data-type="neutral">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="dark" />
+<title>GraDex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+<style>
+  :root, :root[data-type="neutral"] {
+  --bg: #0c0f10;
+  --panel: #131618;
+  --raised: #1b2022;
+  --rule: #31373a;
+  --ink: #f1f3f4;
+  --ink-soft: #c0c6c9;
+  --ink-faint: #99a0a4;
+  --accent: #85a6b7;
+  --agent: #1f292d;
+  --agent-edge: #3b484f;
+  --user: #94afbd;
+  --glow: #4f7487;
+  --accent-ink: #091115;
+  --user-ink: #091115;
+}
+
+:root[data-type="fire"] {
+  --bg: #140c08;
+  --panel: #1e130d;
+  --raised: #2a1b13;
+  --rule: #473024;
+  --ink: #f7f1ed;
+  --ink-soft: #d5bfb4;
+  --ink-faint: #b2988a;
+  --accent: #f6702c;
+  --agent: #3f1e0e;
+  --agent-edge: #683922;
+  --user: #ed6522;
+  --glow: #ce4a09;
+  --accent-ink: #150d09;
+  --user-ink: #150d09;
+}
+
+:root[data-type="water"] {
+  --bg: #090f13;
+  --panel: #0e161d;
+  --raised: #142029;
+  --rule: #263745;
+  --ink: #edf3f7;
+  --ink-soft: #b6c6d3;
+  --ink-faint: #8ca0b0;
+  --accent: #4da6ef;
+  --agent: #10283d;
+  --agent-edge: #254865;
+  --user: #4aa1e8;
+  --glow: #1174c5;
+  --accent-ink: #091015;
+  --user-ink: #091015;
+}
+
+:root[data-type="grass"] {
+  --bg: #0b110c;
+  --panel: #111b12;
+  --raised: #18251a;
+  --rule: #2b402e;
+  --ink: #eff6f0;
+  --ink-soft: #bbcebd;
+  --ink-faint: #93aa96;
+  --accent: #43c754;
+  --agent: #18351c;
+  --agent-edge: #305936;
+  --user: #40bf51;
+  --glow: #31a541;
+  --accent-ink: #09150b;
+  --user-ink: #09150b;
+}
+
+:root[data-type="lightning"] {
+  --bg: #141208;
+  --panel: #1e1c0d;
+  --raised: #2a2613;
+  --rule: #484224;
+  --ink: #f7f6ed;
+  --ink-soft: #d5d0b3;
+  --ink-faint: #b3ac8a;
+  --accent: #fad519;
+  --agent: #40370d;
+  --agent-edge: #695d20;
+  --user: #f2d12c;
+  --glow: #d2b004;
+  --accent-ink: #151309;
+  --user-ink: #151309;
+}
+
+:root[data-type="psychic"] {
+  --bg: #110a12;
+  --panel: #1a101b;
+  --raised: #241826;
+  --rule: #3e2b40;
+  --ink: #f5eff6;
+  --ink-soft: #ccbacf;
+  --ink-faint: #a792aa;
+  --accent: #cd76db;
+  --agent: #321736;
+  --agent-edge: #552f5b;
+  --user: #ca7ad7;
+  --glow: #992da9;
+  --accent-ink: #140915;
+  --user-ink: #140915;
+}
+
+:root[data-type="fighting"] {
+  --bg: #110d0b;
+  --panel: #1a1512;
+  --raised: #241e19;
+  --rule: #3e342d;
+  --ink: #f5f2ef;
+  --ink-soft: #ccc3bd;
+  --ink-faint: #a79c95;
+  --accent: #c38a65;
+  --agent: #32241a;
+  --agent-edge: #564234;
+  --user: #b67b53;
+  --glow: #9a623c;
+  --accent-ink: #150e09;
+  --user-ink: #150e09;
+}
+
+:root[data-type="darkness"] {
+  --bg: #0d0c10;
+  --panel: #141318;
+  --raised: #1c1b22;
+  --rule: #32303b;
+  --ink: #f1f0f4;
+  --ink-soft: #c1bfca;
+  --ink-faint: #9a98a4;
+  --accent: #a59cc9;
+  --agent: #211e2e;
+  --agent-edge: #3e3950;
+  --user: #887db5;
+  --glow: #584b8b;
+  --accent-ink: #0c0915;
+  --user-ink: #0c0915;
+}
+
+:root[data-type="metal"] {
+  --bg: #0d0e0f;
+  --panel: #141617;
+  --raised: #1d1f20;
+  --rule: #333638;
+  --ink: #f1f2f3;
+  --ink-soft: #c2c5c7;
+  --ink-faint: #9b9ea1;
+  --accent: #a8b3bd;
+  --agent: #23262a;
+  --agent-edge: #40454a;
+  --user: #a9b3bc;
+  --glow: #5c6c7a;
+  --accent-ink: #091015;
+  --user-ink: #091015;
+}
+
+:root[data-type="dragon"] {
+  --bg: #131009;
+  --panel: #1c180f;
+  --raised: #282216;
+  --rule: #433a28;
+  --ink: #f7f4ee;
+  --ink-soft: #d1c9b7;
+  --ink-faint: #aea38e;
+  --accent: #dfa32a;
+  --agent: #3a2d12;
+  --agent-edge: #614e29;
+  --user: #ce9627;
+  --glow: #ba861c;
+  --accent-ink: #151109;
+  --user-ink: #151109;
+}
+
+:root[data-type="fairy"] {
+  --bg: #120a0e;
+  --panel: #1c0f16;
+  --raised: #27161f;
+  --rule: #422936;
+  --ink: #f7eef3;
+  --ink-soft: #d0b8c5;
+  --ink-faint: #ad909f;
+  --accent: #e576b1;
+  --agent: #381427;
+  --agent-edge: #5f2b47;
+  --user: #df72ac;
+  --glow: #b42270;
+  --accent-ink: #150910;
+  --user-ink: #150910;
+}
+
+:root[data-type="colorless"] {
+  --bg: #0e0e0e;
+  --panel: #161615;
+  --raised: #1f1f1e;
+  --rule: #373634;
+  --ink: #f3f2f2;
+  --ink-soft: #c6c5c3;
+  --ink-faint: #a09e9d;
+  --accent: #c1beb8;
+  --agent: #282724;
+  --agent-edge: #484542;
+  --user: #cbc8c3;
+  --glow: #736d64;
+  --accent-ink: #151109;
+  --user-ink: #151109;
+}
+
+:root {
+  --go: #4fd69c;
+  --maybe: #f2c14e;
+  --stop: #ff7b6f;
+}
+
+
+  :root {
+    --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Source Serif 4", Georgia, serif;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color 0.6s ease;
+  }
+
+  /* --- Masthead --- */
+  header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--panel);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+  header::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+    background: var(--accent); opacity: 0.85; transition: background-color 0.6s ease;
+  }
+  header h1 { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.015em; }
+  header .tagline { font-size: 0.8rem; color: var(--ink-soft); flex: 1; }
+  #typechip {
+    display: none; align-items: center; gap: 0.4rem;
+    font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--accent-ink); background: var(--accent);
+    padding: 0.22rem 0.6rem 0.22rem 0.4rem; border-radius: 999px;
+  }
+  #typechip.on { display: inline-flex; }
+  #typechip svg { width: 1.05rem; height: 1.05rem; }
+  header button {
+    font-family: var(--sans); font-size: 0.78rem; font-weight: 600;
+    color: var(--ink-soft); background: none;
+    border: 1px solid var(--rule); border-radius: 4px;
+    padding: 0.3rem 0.7rem; cursor: pointer;
+  }
+  header button:hover { color: var(--ink); border-color: var(--accent); }
+  button:focus-visible, textarea:focus-visible, summary:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px;
+  }
+
+  /* --- Two-pane shell --- */
+  main { flex: 1 1 auto; display: grid; grid-template-columns: 370px 1fr; min-height: 0; }
+
+  /* --- Dossier --- */
+  #dossier {
+    border-right: 1px solid var(--rule);
+    background: var(--panel);
+    overflow-y: auto;
+    padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    transition: background-color 0.6s ease;
+  }
+  .block { flex: 0 0 auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--raised); overflow: hidden; }
+  .block.empty { border-style: dashed; background: transparent; }
+  .block.empty .body { color: var(--ink-faint); font-size: 0.85rem; }
+  .block > .label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent);
+    padding: 0.45rem 0.7rem; border-bottom: 1px solid var(--rule);
+  }
+  .block.empty > .label { border-bottom: none; padding-bottom: 0; }
+  .block > .body { padding: 0.7rem; }
+
+  .specimen { display: flex; gap: 0.7rem; }
+  .specimen img {
+    width: 58px; height: 80px; object-fit: cover;
+    border: 1px solid var(--rule); border-radius: 3px; flex: 0 0 auto;
+  }
+  .specimen .name { font-weight: 700; font-size: 0.98rem; line-height: 1.25; }
+  .specimen dl { margin-top: 0.3rem; display: grid; grid-template-columns: auto 1fr; gap: 0.05rem 0.5rem; font-size: 0.82rem; }
+  .specimen dt { color: var(--ink-faint); }
+  .specimen dd { font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+
+  .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); }
+  .prices div { background: var(--raised); padding: 0.5rem 0.6rem; }
+  .prices .k { font-size: 0.72rem; color: var(--ink-faint); }
+  .prices .v { font-size: 1.05rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .prices .n { font-size: 0.68rem; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
+
+  .grade-hero { display: flex; gap: 0.85rem; align-items: flex-start; }
+  .grade-num {
+    font-size: 3.6rem; font-weight: 800; line-height: 0.82; color: var(--accent);
+    letter-spacing: -0.045em; font-variant-numeric: tabular-nums; flex: 0 0 auto;
+  }
+  .grade-num span {
+    display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0;
+    color: var(--ink-faint); line-height: 1.3; margin-top: 0.35rem; white-space: pre-line;
+  }
+  .dist { flex: 1 1 auto; display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+  .dist .row { display: grid; grid-template-columns: 2.4rem 1fr 2.4rem; align-items: center; gap: 0.4rem; font-size: 0.78rem; }
+  .dist .g { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .dist .track { height: 9px; background: var(--bg); border-radius: 2px; overflow: hidden; }
+  .dist .fill { height: 100%; background: var(--ink-faint); border-radius: 2px; transition: width 0.5s ease; }
+  .dist .row.top .fill { background: var(--accent); }
+  .dist .row.top .g, .dist .row.top .p { font-weight: 700; color: var(--ink); }
+  .dist .p { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+
+  .note {
+    margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--rule);
+    font-size: 0.8rem; color: var(--ink-soft); line-height: 1.4;
+  }
+  .note b { font-weight: 600; color: var(--ink); }
+
+  .verdict .headline { font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .verdict.go .headline { color: var(--go); }
+  .verdict.maybe .headline { color: var(--maybe); }
+  .verdict.stop .headline { color: var(--stop); }
+  .verdict .why { font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.35rem; line-height: 1.45; }
+  .verdict dl {
+    margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--rule);
+    display: grid; grid-template-columns: 1fr auto; gap: 0.2rem 0.5rem; font-size: 0.82rem;
+  }
+  .verdict dt { color: var(--ink-faint); }
+  .verdict dd { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+
+  /* --- Conversation --- */
+  #conversation { display: flex; flex-direction: column; min-height: 0; min-width: 0; position: relative; isolation: isolate; }
+
+  /* The type symbol: huge, faint, behind everything. */
+  #glyph {
+    position: absolute; right: -4%; bottom: 4%; width: min(62%, 520px); aspect-ratio: 1;
+    color: var(--accent); opacity: 0.095; z-index: -1; pointer-events: none;
+    transition: opacity 0.6s ease, color 0.6s ease;
+  }
+  #glyph svg { width: 100%; height: 100%; display: block; }
+  #conversation::before {
+    content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none;
+    background: radial-gradient(ellipse 70% 60% at 85% 100%, var(--glow), transparent 70%);
+    opacity: 0.22;
+  }
+
+  #thread {
+    flex: 1 1 auto; overflow-y: auto; padding: 1.5rem 1.5rem 0.5rem;
+    display: flex; flex-direction: column; gap: 1.1rem;
+  }
+  .turn { max-width: 62ch; }
+  .turn.user { align-self: flex-end; max-width: 48ch; }
+  .turn.user .text {
+    background: var(--user); color: var(--user-ink);
+    padding: 0.55rem 0.85rem; border-radius: 14px 14px 3px 14px;
+    font-size: 0.92rem; font-weight: 500;
+    transition: background-color 0.6s ease;
+  }
+  .turn.agent > .text {
+    background: var(--agent); border: 1px solid var(--agent-edge);
+    padding: 0.7rem 0.95rem; border-radius: 14px 14px 14px 3px;
+    font-family: var(--serif); font-size: 1.02rem; line-height: 1.58;
+    white-space: pre-wrap;
+    transition: background-color 0.6s ease;
+  }
+  .turn.agent.pending > .text { color: var(--ink-faint); font-style: italic; }
+
+  .calls { margin-top: 0.6rem; display: flex; flex-direction: column; gap: 0.3rem; }
+  .call { border: 1px solid var(--rule); border-radius: 6px; background: var(--raised); }
+  .call summary {
+    cursor: pointer; padding: 0.35rem 0.6rem; font-size: 0.78rem; color: var(--ink-soft);
+    display: flex; gap: 0.5rem; align-items: baseline; list-style: none;
+  }
+  .call summary::-webkit-details-marker { display: none; }
+  .call summary::before { content: "+"; color: var(--accent); font-weight: 700; }
+  .call[open] summary::before { content: "\2212"; }
+  .call summary b { font-weight: 600; color: var(--ink); font-size: 0.8rem; }
+  .call summary .gist { color: var(--ink-faint); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .call pre {
+    margin: 0; padding: 0.5rem 0.6rem; border-top: 1px solid var(--rule);
+    font-size: 0.72rem; line-height: 1.45; overflow-x: auto;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--ink-soft); background: var(--bg);
+  }
+  .call pre b { color: var(--ink); font-weight: 600; }
+
+  #opening { max-width: 56ch; }
+  #opening p { font-family: var(--serif); font-size: 1.08rem; line-height: 1.6; color: var(--ink-soft); }
+  #opening p + p { margin-top: 0.7rem; }
+  #opening .examples { margin-top: 1.1rem; display: flex; flex-direction: column; gap: 0.4rem; align-items: flex-start; }
+  #opening .examples span { font-size: 0.78rem; color: var(--ink-faint); }
+  #opening button {
+    font-family: var(--serif); font-size: 0.95rem; text-align: left;
+    background: var(--raised); color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 6px;
+    padding: 0.5rem 0.7rem; cursor: pointer; width: 100%;
+  }
+  #opening button:hover { border-color: var(--accent); }
+
+  #composer {
+    flex: 0 0 auto; display: flex; gap: 0.6rem; align-items: flex-end;
+    padding: 0.9rem 1.5rem; border-top: 1px solid var(--rule);
+    background: color-mix(in srgb, var(--panel) 88%, transparent);
+  }
+  #composer textarea {
+    flex: 1 1 auto; resize: none; font-family: var(--sans); font-size: 0.95rem;
+    line-height: 1.4; padding: 0.55rem 0.7rem; color: var(--ink);
+    border: 1px solid var(--rule); border-radius: 6px; background: var(--raised);
+    max-height: 7rem;
+  }
+  #composer textarea::placeholder { color: var(--ink-faint); }
+  #composer textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; border-color: var(--accent); }
+  #composer button {
+    font-family: var(--sans); font-size: 0.88rem; font-weight: 700;
+    background: var(--accent); color: var(--accent-ink); border: none; border-radius: 6px;
+    padding: 0.6rem 1.1rem; cursor: pointer;
+  }
+  #composer button:disabled { opacity: 0.4; cursor: default; }
+  #meter {
+    flex: 0 0 auto; font-size: 0.7rem; color: var(--ink-faint);
+    font-variant-numeric: tabular-nums; text-align: right; line-height: 1.3; white-space: pre-line;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+
+  @media (max-width: 860px) {
+    main { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    #dossier { border-right: none; border-bottom: 1px solid var(--rule); max-height: 44vh; padding: 1rem; }
+    #dossier > :nth-child(1) { order: 4; }
+    #dossier > :nth-child(2) { order: 3; }
+    #dossier > :nth-child(3) { order: 2; }
+    #dossier > :nth-child(4) { order: 1; }
+    #glyph { width: 90%; right: -20%; }
+    header { padding: 0.7rem 1rem; flex-wrap: wrap; gap: 0.5rem; }
+    header .tagline { flex-basis: 100%; order: 3; }
+    #thread, #composer { padding-left: 1rem; padding-right: 1rem; }
+    .turn, #opening { max-width: 100%; }
+    #composer { flex-wrap: wrap; }
+    #composer textarea { flex: 1 1 100%; order: 1; }
+    #composer button { order: 2; }
+    #meter { order: 3; flex: 1 1 auto; text-align: left; white-space: normal; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>GraDex</h1>
+  <p class="tagline">Works out whether a Pokémon card is worth sending to PSA. Estimates a grade from your description &mdash; it is not a grade.</p>
+  <span id="typechip" aria-live="polite"></span>
+  <button id="reset" type="button">Start over</button>
+</header>
+
+<main>
+  <section id="dossier" aria-label="Card dossier"></section>
+
+  <section id="conversation">
+    <div id="glyph" aria-hidden="true"></div>
+    <div id="thread">
+      <div id="opening">
+        <p>Describe a card you are thinking about grading. I will pin down which exact printing you have, look up what it sells for raw and in PSA slabs, ask a handful of questions about its condition, and then work out whether grading beats just selling it as it is.</p>
+        <p>Grading currently starts at $59.99 a card, so for most cards the answer is no. The useful part is knowing which ones are the exception.</p>
+        <div class="examples">
+          <span>Try one of these</span>
+          <button type="button">I pulled a Charizard VMAX from Champion's Path and it looks mint. Worth grading?</button>
+          <button type="button">I have a 1999 Base Set Blastoise, holo, kept in a binder since I was a kid.</button>
+          <button type="button">Is it worth grading a Moonbreon? I have the Evolving Skies alt art.</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="composer">
+      <textarea id="input" rows="1" placeholder="Describe your card&hellip;" autocomplete="off"></textarea>
+      <button id="send" type="button">Ask</button>
+      <div id="meter" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+"use strict";
+
+const GLYPHS = {"neutral": "<rect x=\"18\" y=\"8\" width=\"64\" height=\"84\" rx=\"9\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\"/><rect x=\"29\" y=\"20\" width=\"42\" height=\"40\" rx=\"3\" fill=\"currentColor\"/><rect x=\"29\" y=\"68\" width=\"42\" height=\"6\" rx=\"3\" fill=\"currentColor\"/><rect x=\"29\" y=\"79\" width=\"26\" height=\"5\" rx=\"2.5\" fill=\"currentColor\"/>", "fire": "<path fill=\"currentColor\" d=\"M52 4c3 17-6 24-13 33-8 10-14 19-14 31 0 17 12 28 27 28s27-11 27-27c0-12-6-19-11-26-1 8-5 12-9 13 5-17-1-35-7-52zM50 94c-9 0-15-6-15-14 0-7 5-12 10-17 1 5 4 8 8 8 5 0 8-4 8-9 4 5 6 10 6 16 0 9-7 16-17 16z\" fill-rule=\"evenodd\"/>", "water": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M50 5C38 24 20 44 20 64a30 30 0 0 0 60 0C80 44 62 24 50 5zM34 62c-2 0-3 2-3 4 1 9 8 16 17 17 2 0 3-1 3-3s-1-3-3-3c-6-1-11-6-11-12 0-2-1-3-3-3z\"/>", "grass": "<path fill=\"currentColor\" d=\"M88 8C45 8 14 28 14 62c0 6 1 11 4 16C8 88 6 93 6 93l7 2c2-3 5-8 10-13 5 2 11 3 17 3 33 0 48-34 48-75zM28 72c8-18 24-32 44-44-14 14-26 28-34 48-4-1-8-2-10-4z\" fill-rule=\"evenodd\"/>", "lightning": "<path fill=\"currentColor\" d=\"M58 3 18 54h26L36 97l46-56H56z\"/>", "psychic": "<path fill=\"none\" stroke=\"currentColor\" stroke-width=\"7\" stroke-linejoin=\"round\" d=\"M5 50C20 26 36 16 50 16s30 10 45 34C80 74 64 84 50 84S20 74 5 50z\"/><circle cx=\"50\" cy=\"50\" r=\"19\" fill=\"currentColor\"/><circle cx=\"50\" cy=\"50\" r=\"7\" fill=\"var(--bg)\"/>", "fighting": "<path fill=\"currentColor\" d=\"M50 3l9 22 22-12-8 24 24 4-20 15 16 18-24-2 2 25-19-16-19 16 2-25-24 2 16-18L2 41l24-4-8-24 22 12z\"/><circle cx=\"50\" cy=\"50\" r=\"13\" fill=\"var(--bg)\"/>", "darkness": "<path fill=\"currentColor\" d=\"M62 5a46 46 0 1 0 33 70A38 38 0 0 1 62 5z\"/>", "metal": "<path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M50 4 90 27v46L50 96 10 73V27zm0 26a20 20 0 1 0 0 40 20 20 0 0 0 0-40z\"/>", "dragon": "<path fill=\"currentColor\" d=\"M18 6c6 30 18 44 30 54 6 5 9 11 8 20-1 5-4 10-8 14 14-2 24-12 25-25 1-9-3-17-9-23C52 36 40 28 34 6zM66 14c3 12 9 20 15 26 5 5 7 11 5 18 8-10 8-23 1-32-5-7-12-9-21-12z\"/>", "fairy": "<path fill=\"currentColor\" d=\"M50 2c4 25 8 32 14 36 6 5 14 8 34 12-20 4-28 7-34 12-6 4-10 11-14 36-4-25-8-32-14-36C30 57 22 54 2 50c20-4 28-7 34-12 6-4 10-11 14-36z\"/><circle cx=\"82\" cy=\"18\" r=\"7\" fill=\"currentColor\"/><circle cx=\"20\" cy=\"82\" r=\"5\" fill=\"currentColor\"/>", "colorless": "<circle cx=\"50\" cy=\"50\" r=\"40\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"9\"/><path fill=\"currentColor\" d=\"M50 26l6 18 18 6-18 6-6 18-6-18-18-6 18-6z\"/>"};
+const TYPE_LABELS = {"neutral": "Neutral", "fire": "Fire", "water": "Water", "grass": "Grass", "lightning": "Lightning", "psychic": "Psychic", "fighting": "Fighting", "darkness": "Darkness", "metal": "Metal", "dragon": "Dragon", "fairy": "Fairy", "colorless": "Colorless"};
+
+/* --- Type theme ---------------------------------------------------- */
+
+const chip = document.getElementById("typechip");
+const glyphEl = document.getElementById("glyph");
+
+function svgFor(type, cls) {
+  return '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" focusable="false">' +
+    (GLYPHS[type] || GLYPHS.neutral) + "</svg>";
+}
+
+function applyTheme(type) {
+  if (!GLYPHS[type]) type = "neutral";
+  document.documentElement.setAttribute("data-type", type);
+  glyphEl.innerHTML = svgFor(type);
+  if (type === "neutral") {
+    chip.className = "";
+    chip.innerHTML = "";
+  } else {
+    chip.className = "on";
+    chip.innerHTML = svgFor(type) + "<span>" + TYPE_LABELS[type] + "</span>";
+  }
+}
+window.applyTheme = applyTheme;
+
+const thread = document.getElementById("thread");
+const dossierEl = document.getElementById("dossier");
+const input = document.getElementById("input");
+const sendBtn = document.getElementById("send");
+const meter = document.getElementById("meter");
+let sessionId = null;
+let busy = false;
+
+const GRADES = [
+  ["psa10", "10"], ["psa9", "9"], ["psa8", "8"], ["psa7", "7"], ["psa6_or_lower", "≤6"]
+];
+
+function el(tag, cls, text) {
+  const node = document.createElement(tag);
+  if (cls) node.className = cls;
+  if (text !== undefined && text !== null) node.textContent = text;
+  return node;
+}
+
+function money(value) {
+  if (value === null || value === undefined || value === "") return "—";
+  const n = Number(value);
+  if (!isFinite(n)) return "—";
+  return "$" + n.toLocaleString("en-US", { maximumFractionDigits: n < 100 ? 2 : 0 });
+}
+
+function pct(value) {
+  const n = Number(value);
+  if (!isFinite(n)) return "—";
+  return Math.round(n * 100) + "%";
+}
+
+/* --- Dossier ------------------------------------------------------- */
+
+function block(label, isEmpty) {
+  const b = el("div", "block" + (isEmpty ? " empty" : ""));
+  b.appendChild(el("div", "label", label));
+  const body = el("div", "body");
+  b.appendChild(body);
+  return { block: b, body: body };
+}
+
+function renderCard(d) {
+  const card = d.card;
+  if (!card) {
+    const n = d.candidates && d.candidates.length;
+    const b = block("Card", true);
+    b.body.appendChild(el("div", null, n
+      ? n + " printings match so far. Answer the question in the chat to narrow it down."
+      : "Not identified yet."));
+    return b.block;
+  }
+  const b = block("Card", false);
+  const wrap = el("div", "specimen");
+  if (card.image) {
+    const img = el("img");
+    img.src = card.image;
+    img.alt = "";
+    img.loading = "lazy";
+    img.onerror = function () { img.remove(); };
+    wrap.appendChild(img);
+  }
+  const text = el("div");
+  text.appendChild(el("div", "name", card.name || "Unknown card"));
+  const dl = el("dl");
+  const rows = [["Set", card.set], ["Number", card.number], ["Rarity", card.rarity], ["Printing", card.printing]];
+  rows.forEach(function (r) {
+    if (!r[1]) return;
+    dl.appendChild(el("dt", null, r[0]));
+    dl.appendChild(el("dd", null, String(r[1])));
+  });
+  text.appendChild(dl);
+  wrap.appendChild(text);
+  b.body.appendChild(wrap);
+  return b.block;
+}
+
+function renderPrices(d) {
+  if (!d.prices) {
+    const b = block("Market", true);
+    b.body.appendChild(el("div", null, "No prices looked up yet."));
+    return b.block;
+  }
+  const b = block("Market", false);
+  b.body.style.padding = "0";
+  const graded = d.prices.graded_prices || {};
+  const grid = el("div", "prices");
+  function freshness(entry) {
+    if (!entry) return null;
+    if (entry.price_status && entry.price_status !== "current") return entry.price_status;
+    if (typeof entry.age_days === "number") {
+      if (entry.age_days <= 1) return "today";
+      return entry.age_days + "d ago";
+    }
+    return entry.updated || null;
+  }
+  const cells = [
+    ["Raw", d.prices.raw_market_price, d.prices.raw_condition_priced],
+    ["PSA 9", graded.psa9 && graded.psa9.price, freshness(graded.psa9)],
+    ["PSA 10", graded.psa10 && graded.psa10.price, freshness(graded.psa10)]
+  ];
+  cells.forEach(function (c) {
+    const cell = el("div");
+    cell.appendChild(el("div", "k", c[0]));
+    cell.appendChild(el("div", "v", money(c[1])));
+    if (c[2]) cell.appendChild(el("div", "n", String(c[2])));
+    grid.appendChild(cell);
+  });
+  b.body.appendChild(grid);
+  if (d.prices.caveat) {
+    const note = el("div", "note");
+    note.style.margin = "0";
+    note.style.padding = "0.6rem 0.7rem 0";
+    note.appendChild(el("span", null, d.prices.caveat));
+    b.body.appendChild(note);
+  }
+  return b.block;
+}
+
+function renderGrade(d) {
+  if (!d.grade) {
+    const b = block("Estimated grade", true);
+    b.body.appendChild(el("div", null, "Not estimated yet. I will ask about centering, corners, edges and surface."));
+    return b.block;
+  }
+  const g = d.grade;
+  const dist = g.grade_distribution || {};
+  const b = block("Estimated grade", false);
+
+  const hero = el("div", "grade-hero");
+  const num = el("div", "grade-num", String(g.most_likely_grade === 6 ? "≤6" : g.most_likely_grade));
+  num.appendChild(el("span", null, "most likely\n" + (g.confidence || "") + " confidence"));
+  hero.appendChild(num);
+
+  const top = Math.max.apply(null, GRADES.map(function (p) { return Number(dist[p[0]]) || 0; }));
+  const bars = el("div", "dist");
+  GRADES.forEach(function (pair) {
+    const value = Number(dist[pair[0]]) || 0;
+    const row = el("div", "row" + (value === top && top > 0 ? " top" : ""));
+    row.appendChild(el("div", "g", pair[1]));
+    const track = el("div", "track");
+    const fill = el("div", "fill");
+    fill.style.width = Math.round(value * 100) + "%";
+    track.appendChild(fill);
+    row.appendChild(track);
+    row.appendChild(el("div", "p", pct(value)));
+    bars.appendChild(row);
+  });
+  hero.appendChild(bars);
+  b.body.appendChild(hero);
+
+  if (g.limiting_factor) {
+    const note = el("div", "note");
+    note.appendChild(el("b", null, "Holding it back: "));
+    note.appendChild(el("span", null, g.limiting_factor));
+    b.body.appendChild(note);
+  }
+  return b.block;
+}
+
+function renderVerdict(d) {
+  if (!d.verdict) {
+    const b = block("Verdict", true);
+    b.body.appendChild(el("div", null, "Waiting on the grade estimate and a price check."));
+    return b.block;
+  }
+  const v = d.verdict;
+  const tone = v.verdict === "GRADE IT" ? "go" : (v.verdict === "MARGINAL" ? "maybe" : "stop");
+  const b = block("Verdict", false);
+  b.block.classList.add("verdict", tone);
+  b.body.appendChild(el("div", "headline", v.verdict || "—"));
+  if (v.headline) b.body.appendChild(el("div", "why", v.headline));
+
+  const ev = v.expected_value || {};
+  const sub = v.submission || {};
+  const dl = el("dl");
+  const rows = [
+    ["Expected net, graded", money(ev.net_after_grading_costs)],
+    ["Net if sold raw today", money(ev.net_if_sold_raw_today)],
+    ["Break-even grade", v.break_even_grade ? "PSA " + v.break_even_grade : "none"],
+    ["Chance of beating raw", v.probability_of_beating_raw !== undefined ? pct(v.probability_of_beating_raw) : "—"],
+    ["Service level", sub.service_level || "—"],
+    ["All-in cost per card", money(sub.all_in_cost_per_card)]
+  ];
+  rows.forEach(function (r) {
+    dl.appendChild(el("dt", null, r[0]));
+    dl.appendChild(el("dd", null, String(r[1])));
+  });
+  b.body.appendChild(dl);
+
+  if (v.bundling_advice) {
+    const note = el("div", "note");
+    note.appendChild(el("b", null, "On shipping: "));
+    note.appendChild(el("span", null, v.bundling_advice));
+    b.body.appendChild(note);
+  }
+  return b.block;
+}
+
+function renderDossier(d) {
+  d = d || { card: null, candidates: [], prices: null, grade: null, verdict: null };
+  applyTheme(d.theme);
+  dossierEl.replaceChildren(
+    renderCard(d), renderPrices(d), renderGrade(d), renderVerdict(d)
+  );
+}
+
+/* --- Tool-call chips ----------------------------------------------- */
+
+function gistOf(call) {
+  const r = call.result;
+  if (!r || typeof r !== "object") return "";
+  if (r.error) return "could not complete";
+  switch (call.name) {
+    case "identify_card":
+      return (r.match_count || 0) + (r.match_count === 1 ? " printing matched" : " printings matched");
+    case "get_graded_market_prices":
+      return "raw " + money(r.raw_market_price) +
+        (r.graded_prices && r.graded_prices.psa10
+          ? ", PSA 10 " + money(r.graded_prices.psa10.price) : "");
+    case "score_card_condition":
+      return "most likely PSA " + r.most_likely_grade + ", " + pct(r.p_psa10) + " chance of a 10";
+    case "set_card_theme":
+      return r.theme_set ? r.card_type + " theme" : "type unknown, staying neutral";
+    case "grading_verdict":
+      return r.verdict || "";
+    default:
+      return "";
+  }
+}
+
+function renderCalls(calls) {
+  const wrap = el("div", "calls");
+  calls.forEach(function (call) {
+    const d = el("details", "call");
+    const s = el("summary");
+    s.appendChild(el("b", null, call.name));
+    s.appendChild(el("span", "gist", gistOf(call)));
+    d.appendChild(s);
+    const pre = el("pre");
+    pre.appendChild(el("b", null, "arguments\n"));
+    pre.appendChild(el("span", null, JSON.stringify(call.args, null, 2) + "\n\n"));
+    pre.appendChild(el("b", null, "result\n"));
+    pre.appendChild(el("span", null, JSON.stringify(call.result, null, 2)));
+    d.appendChild(pre);
+    wrap.appendChild(d);
+  });
+  return wrap;
+}
+
+/* --- Conversation -------------------------------------------------- */
+
+function addTurn(who, text, pending) {
+  const opening = document.getElementById("opening");
+  if (opening) opening.remove();
+  const turn = el("div", "turn " + who + (pending ? " pending" : ""));
+  turn.appendChild(el("div", "text", text));
+  thread.appendChild(turn);
+  thread.scrollTop = thread.scrollHeight;
+  return turn;
+}
+
+function updateMeter(usage) {
+  if (!usage) return;
+  meter.textContent = usage.api_calls_made + " / " + usage.free_tier_daily_calls +
+    " price calls\n" + usage.cache_hits + " served from cache";
+}
+
+async function send(text) {
+  if (busy) return;
+  text = (text || input.value).trim();
+  if (!text) return;
+
+  busy = true;
+  sendBtn.disabled = true;
+  input.value = "";
+  input.style.height = "auto";
+  addTurn("user", text);
+  const pending = addTurn("agent", "Working on it…", true);
+
+  try {
+    const res = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, session_id: sessionId })
+    });
+    if (!res.ok) throw new Error("the server returned " + res.status);
+    const data = await res.json();
+    sessionId = data.session_id;
+
+    pending.classList.remove("pending");
+    pending.querySelector(".text").textContent = data.response || "(no reply)";
+    if (data.tool_calls && data.tool_calls.length) {
+      pending.appendChild(renderCalls(data.tool_calls));
+    }
+    renderDossier(data.dossier);
+    updateMeter(data.api_usage);
+  } catch (err) {
+    pending.classList.remove("pending");
+    pending.querySelector(".text").textContent =
+      "That did not go through: " + err.message + ". Send it again.";
+  }
+
+  busy = false;
+  sendBtn.disabled = false;
+  thread.scrollTop = thread.scrollHeight;
+  input.focus();
+}
+
+sendBtn.addEventListener("click", function () { send(); });
+
+input.addEventListener("keydown", function (e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    send();
+  }
+});
+
+input.addEventListener("input", function () {
+  input.style.height = "auto";
+  input.style.height = Math.min(input.scrollHeight, 112) + "px";
+});
+
+document.querySelectorAll("#opening .examples button").forEach(function (b) {
+  b.addEventListener("click", function () { send(b.textContent); });
+});
+
+document.getElementById("reset").addEventListener("click", async function () {
+  if (sessionId) {
+    try {
+      await fetch("/clear?session_id=" + encodeURIComponent(sessionId), { method: "POST" });
+    } catch (err) { /* a stale session on the server is harmless */ }
+  }
+  sessionId = null;
+  location.reload();
+});
+
+renderDossier(null);
+input.focus();
+</script>
+</body>
+</html>

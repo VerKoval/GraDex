@@ -1,0 +1,13 @@
+[project]
+name = "gradex"
+version = "0.1.0"
+description = "A tool-calling agent that decides whether a Pokemon card is worth sending to PSA for grading"
+requires-python = ">=3.10"
+dependencies = [
+    "openai-agents[litellm]>=0.22",
+    "google-cloud-aiplatform>=1.40.0",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "requests>=2.31",
+    "httpx>=0.27",
+]
