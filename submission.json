@@ -1,4 +1,4 @@
 {
-  "deploy_url": "https://REPLACE-WITH-YOUR-CLOUD-RUN-URL.run.app",
-  "authors": ["REPLACE-WITH-YOUR-COLUMBIA-UNI"]
+  "deploy_url": "https://gradex-veronicak.cloud.run/",
+  "authors": ["vtk2106"]
 }
