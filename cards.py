@@ -17,6 +17,7 @@ one degrades the result rather than raising.
 """
 
 import os
+import re
 import time
 
 import requests
@@ -326,9 +327,16 @@ def identify(query: str, set_name: str = "", number: str = "", limit: int = 8) -
             )
         }
 
-    base: dict = {"q": text, "limit": max(1, min(int(limit or 8), MAX_LIMIT))}
-    if set_name and set_name.strip():
-        base["set"] = set_name.strip()
+    # The API's q matches card names only, and its `set` filter does not take a
+    # set's printed name. So search by the card name alone (a full page) and
+    # narrow by set here.
+    cap = max(1, min(int(limit or 8), MAX_LIMIT))
+    drop = set(re.findall(r"[a-z0-9]+", f"{set_name} {number}".lower().replace("'", "")))
+    name_words = [
+        w for w in text.split()
+        if re.sub(r"[^a-z0-9]", "", w.lower()) not in drop and not re.fullmatch(r"\d+/\d+", w)
+    ]
+    base: dict = {"q": " ".join(name_words) or text, "limit": MAX_LIMIT}
 
     want = _number_key(number)
     candidates: list[dict] = []
@@ -362,6 +370,13 @@ def identify(query: str, set_name: str = "", number: str = "", limit: int = 8) -
             return {"error": outcome["error"], "query": text}
         candidates = _candidates_from(outcome)
         from_cache = outcome.get("from_cache", False)
+
+    if set_name and set_name.strip():
+        wanted = set(re.findall(r"[a-z0-9]+", set_name.lower().replace("'", "")))
+        in_set = [c for c in candidates
+                  if wanted <= set(re.findall(r"[a-z0-9]+", str(c.get("set") or "").lower().replace("'", "")))]
+        candidates = in_set or candidates
+    candidates = candidates[:cap]
 
     if not candidates:
         return {
